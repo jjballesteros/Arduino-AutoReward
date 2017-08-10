@@ -1,0 +1,40 @@
+Original text by Jesús J. Ballesteros on 08.10.2017.
+
+This version of Autoreward (check under code folder) code includes different protocols with
+decreasing probabilities of successful reward, for extintion paradigms. It need to be loaded
+in the Board memory. This will delete any previous code in it.
+
+(Important) HARDWARE modification to the original scheme:
+All wires from the keyboard to the board ARE NEEDED. Check the code to see which ones are now
+neccessary, compared to the original version (Keyboard implementation).
+
+New functions:
+
+The idea is to train rodents to enter one of the two arms, being rewarded when the correct
+-and not when the wrong- choice is made. Extintion paradigms will include changes in the
+enviroment and/or decreases on probabilities of being rewarded, when entering the correct arm.
+For that, this code's version (Autoreward2.prob) includes the possibility to change between 
+different levels of reward probability (100%, 75%, 50% and 25%) for both arms (R or L):
+
+  //I define short press 1 = HABITUATION -> Always gives reward in both arms
+  //         short press 2 = TRAINING_R  -> Always gives reward, only in Right arm
+  //         short press 3 = TRAINING_L  -> Always gives reward, only in Left arm
+  //         short press 4 = PROB75R     -> Gives reward with 75% probability, only in Right arm
+  //         short press 5 = PROB50R     -> Gives reward with 50% probability, only in Right arm
+  //         short press 6 = PROB25R     -> Gives reward with 25% probability, only in Right arm
+  //         short press 7 = PROB75L     -> Gives reward with 75% probability, only in Left arm
+  //         short press 8 = PROB50L     -> Gives reward with 50% probability, only in Left arm
+  //         short press 9 = PROB25L     -> Gives reward with 25% probability, only in Left arm
+  //         short press 0 = FILLandCLEAN-> To fill and Clean the water tanks and tubing
+
+The probability is determined by a 'Random' number (1-100) generated in every iteration.
+The randomization is optimized thanks to a 'Random seed' obtained by lecture of an empty
+analog input, which gives an aleatory noise read.
+
+Every time the animal cross the correct infrared beam, the system compares the number with the
+prefixed chance threshold (x <= 75, x <= 50, x <= 25) and only gives the reward if this condition
+is true.
+
+
+
+Jesús
